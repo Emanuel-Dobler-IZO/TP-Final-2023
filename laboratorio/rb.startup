@@ -1,0 +1,23 @@
+#Para que funcione el nameserver
+cd shared
+cp resolv.conf /etc
+
+#Para que funcione el enrutamiento dinamico
+cd /rb/etc/quagga
+cp daemons /etc/quagga
+cp zebra.conf /etc/quagga
+cp ospfd.conf /etc/quagga
+
+#RB 0@20.126
+ip a add 172.16.20.126/25 dev eth0
+#RB 1@28.29
+ip a add 192.168.28.29/30 dev eth1
+#RB 2@28.5
+ip a add 192.168.28.5/30 dev eth2
+#RB 3@28.34
+ip a add 192.168.28.34/30 dev eth3
+
+#desde RB 3@34 hacia RC
+ip route add default via 192.168.28.33
+
+/etc/init.d/quagga start

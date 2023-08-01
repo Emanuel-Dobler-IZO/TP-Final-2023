@@ -1,0 +1,6 @@
+#Para que funcione el nameserver
+cd shared
+cp resolv.conf /etc
+
+ip a add 10.10.10.1/30 dev eth0
+ip route add default via 10.10.10.2

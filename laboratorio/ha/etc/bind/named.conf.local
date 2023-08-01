@@ -1,0 +1,4 @@
+zone "ed.izo" IN {
+ type master;
+ file "/etc/bind/ed.izo.zone";
+};

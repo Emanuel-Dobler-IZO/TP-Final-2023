@@ -1,0 +1,20 @@
+#Para que funcione el nameserver
+cd shared
+cp resolv.conf /etc
+
+#DNS
+#Para que funcione la zona
+cd /ha/etc/bind
+cp named.conf.local /etc/bind
+cp ed.izo.zone /etc/bind
+#Para que funcione el SOA
+
+#HA
+ip a add 172.16.15.1/15 dev eth0
+#RA 0@255.254
+ip route add default via 172.16.255.254
+
+#DNS
+service bind restart 
+
+
